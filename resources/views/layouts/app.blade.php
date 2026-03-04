@@ -45,6 +45,11 @@
                 Mis Expensas
             </a>
 
+            <a href="/proyectados" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors {{ request()->is('proyectados*') ? 'bg-gray-50 text-[#FA8072]' : 'text-gray-500 hover:bg-gray-50 hover:text-[#FA8072]' }}">
+                <i class="bi bi-file-earmark-pdf text-xl"></i>
+                Proyectados
+            </a>
+
         </nav>
     </aside>
 

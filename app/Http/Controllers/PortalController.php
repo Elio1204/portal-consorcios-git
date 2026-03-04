@@ -33,9 +33,9 @@ class PortalController extends Controller
         // 3. Últimas 3 Órdenes de Trabajo
         $ots = \Illuminate\Support\Facades\DB::table('ots')
             ->where('idconsorcio', $idcons)
+            ->where('valor_presup', '>', 0)
             ->orderBy('fe_ingreso', 'desc')
-            ->limit(3)
-            ->get();
+            ->paginate(3);
 
 
         $total_expensas = \Illuminate\Support\Facades\DB::table('expensas_liquidacion')

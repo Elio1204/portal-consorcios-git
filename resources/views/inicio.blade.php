@@ -108,6 +108,13 @@
                         <p class="text-sm">No hay órdenes de trabajo registradas</p>
                     </div>
                     @endforelse
+
+
+                    @if($ots->hasPages())
+                    <div class="p-4 border-t border-gray-100 bg-gray-50/50">
+                        {{ $ots->links() }}
+                    </div>
+                    @endif
                 </div>
 
             </div>

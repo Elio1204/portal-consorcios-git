@@ -92,7 +92,7 @@
                 <div class="w-16 h-16 bg-[#FA8072]/10 rounded-full flex items-center justify-center mb-4">
                     <i class="bi bi-inbox text-2xl text-[#FA8072]"></i>
                 </div>
-                <h3 class="text-gray-800 font-medium text-lg">No hay órdenes registradas</h3>
+                <h3 class="text-gray-800 font-medium text-lg">No hay órdenes registradas para la unidad</h3>
                 <p class="text-gray-500 text-sm mt-1">Cuando se generen nuevas órdenes de trabajo, aparecerán aquí.</p>
             </div>
             @endforelse
