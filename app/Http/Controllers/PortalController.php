@@ -36,16 +36,45 @@ class PortalController extends Controller
             ->orderBy('fe_ingreso', 'desc')
             ->limit(3)
             ->get();
+
+
+        $total_expensas = \Illuminate\Support\Facades\DB::table('expensas_liquidacion')
+            ->where('idcons', $idcons)
+            ->where('iduf', $id_uf)
+            ->sum('total');
+
+        $total_punitorios = \Illuminate\Support\Facades\DB::table('cons_uf_punitorios')
+            ->where('idcons', $idcons)
+            ->where('iduf', $id_uf)
+            ->sum('importe_2do');
+
+        $total_particular = \Illuminate\Support\Facades\DB::table('gastos_particulares')
+            ->where('idcons', $idcons)
+            ->where('iduf', $id_uf)
+            ->sum('gas_par_importe');
+
+
+        $total_pagos = \Illuminate\Support\Facades\DB::table('pagos')
+            ->where('idcons', $idcons)
+            ->where('iduf', $id_uf)
+            ->sum('importe_total'); 
+
+
+        $total_deuda = $total_expensas + $total_punitorios + $total_particular - $total_pagos;
+
         // dd(session()->all());
 
 
         return view('inicio', [
             "id_uf" => $id_uf,
             "base_cliente" => $base_cliente,
+            'piso' => $unidad->piso,
+            'depto' => $unidad->depto,
             "unidad" => $unidad,
             "consorcio" => $consorcio, 
             "ots" => $ots,
-            "nombre_consorcio" =>  $consorcio->nombre, 
+            "nombre_consorcio" =>  $consorcio->nombre,
+            "total_a_pagar" => $total_deuda,
             "nombre_admin" => session('nombre_admin') // Directo de la sesión
 
         ]);
