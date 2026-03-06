@@ -25,35 +25,38 @@
                         <i class="bi bi-hourglass-split text-xl"></i>
                     </div>
                     <div>
-                        <p class="text-sm font-bold text-gray-800">OT #1</p>
-                        <p class="text-xs text-gray-500 font-medium mt-0.5">{{ $proyectado->periodo ?? 'Sector general' }}</p>
+                        <p class="text-sm font-bold text-gray-800">{{ $proyectado->periodo ?? 'Sin periodo' }}</p>
+                        <p class="text-xs text-gray-500 font-medium mt-0.5">{{ $proyectado->pro_enc_aceptado == 't' ? 'Terminado' : ($proyectado->pro_enc_aceptado ?? 'En proceso   ' )}}</p>
                     </div>
                 </div>
 
                 <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Concepto</p>
-                        <p class="text-gray-600 text-xs line-clamp-2 leading-relaxed" title="{{ $proyectado->periodo }}">
-                            {{ $proyectado->periodo ?? 'Sin descripción detallada' }}
+                        <p class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Hasta</p>
+                        <p class="font-medium text-gray-700">
+                            <i class="bi bi-calendar-event mr-1 text-[#FA8072]/70"></i>
+                            {{ $proyectado->pro_enc_desde ?? 'Sin lectura' }}
                         </p>
                     </div>
                     
                     <div>
-                        <p class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Mes Estimado</p>
+                        <p class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Hasta</p>
                         <p class="font-medium text-gray-700">
                             <i class="bi bi-calendar-event mr-1 text-[#FA8072]/70"></i>
-                            
+                            {{ $proyectado->pro_enc_hasta ?? 'Sin lectura' }}
                         </p>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between md:justify-end gap-4 min-w-[150px]">
-                    <div class="text-right w-full md:w-auto mt-2 md:mt-0">
-                        <span class="inline-flex items-center px-4 py-2 rounded-xl bg-gray-50 border border-gray-100 text-sm font-bold text-gray-700 shadow-sm group-hover:bg-white group-hover:border-[#FA8072]/40 group-hover:text-[#FA8072] transition-colors">
-                            
-                        </span>
-                    </div>
-                </div>
+<button type="button" 
+    onclick="abrirModalProyectado(this)"
+    data-titulo="Proyectado #{{ $proyectado->periodo ?? 'S/N' }}"
+    data-periodo="{{ $proyectado->periodo ?? 'Sin periodo' }}"
+    data-hasta="{{ $proyectado->pro_enc_hasta ?? 'Sin lectura' }}"
+    data-detalle="{{ $proyectado->periodo ?? 'Sin detalle adicional cargado en el sistema.' }}"
+    class="inline-flex items-center px-4 py-2 rounded-xl bg-gray-50 border border-gray-100 text-sm font-bold text-gray-700 shadow-sm hover:bg-white hover:border-[#FA8072]/40 hover:text-[#FA8072] transition-colors cursor-pointer">
+    Ver más <i class="bi bi-arrows-angle-expand ml-2 text-[10px]"></i>
+</button>
 
             </div>
             
