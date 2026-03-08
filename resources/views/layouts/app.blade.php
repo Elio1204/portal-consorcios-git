@@ -115,7 +115,7 @@
         </footer>
 
     </main>
-
+        @include('components.modal-generico')
 </body>
 
 </html>

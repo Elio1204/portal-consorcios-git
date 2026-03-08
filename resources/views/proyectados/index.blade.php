@@ -48,15 +48,25 @@
                     </div>
                 </div>
 
-<button type="button" 
-    onclick="abrirModalProyectado(this)"
-    data-titulo="Proyectado #{{ $proyectado->periodo ?? 'S/N' }}"
-    data-periodo="{{ $proyectado->periodo ?? 'Sin periodo' }}"
-    data-hasta="{{ $proyectado->pro_enc_hasta ?? 'Sin lectura' }}"
-    data-detalle="{{ $proyectado->periodo ?? 'Sin detalle adicional cargado en el sistema.' }}"
-    class="inline-flex items-center px-4 py-2 rounded-xl bg-gray-50 border border-gray-100 text-sm font-bold text-gray-700 shadow-sm hover:bg-white hover:border-[#FA8072]/40 hover:text-[#FA8072] transition-colors cursor-pointer">
-    Ver más <i class="bi bi-arrows-angle-expand ml-2 text-[10px]"></i>
-</button>
+                @php
+                    // Buscamos si este encabezado tiene detalles. Si no tiene, le pasamos un array vacío []
+                    $mis_detalles = isset($detalles[$proyectado->idpro_enc]) ? $detalles[$proyectado->idpro_enc] : [];
+                @endphp
+
+                <button type="button" 
+                    onclick="abrirModalGenerico(this)"
+                    data-titulo="Detalles de los gastos proyectados del periodo #{{ $proyectado->periodo ?? 'S/N' }}"
+                    data-label1="Periodo"
+                    data-valor1="{{ $proyectado->periodo ?? 'Sin periodo' }}"
+                    data-label2="Vigencia Hasta"
+                    data-valor2="{{ $proyectado->pro_enc_hasta ?? 'Sin lectura' }}"
+                    data-detalle="{{ $proyectado->prov_informe ?? 'Sin detalle adicional.' }}"
+                    
+                    data-lista="{{ json_encode($mis_detalles) }}"
+                    
+                    class="inline-flex items-center px-4 py-2 rounded-xl bg-gray-50 border border-gray-100 text-sm font-bold text-gray-700 shadow-sm hover:bg-white hover:border-[#FA8072]/40 hover:text-[#FA8072] transition-colors cursor-pointer">
+                    Ver más <i class="bi bi-arrows-angle-expand ml-2 text-[10px]"></i>
+                </button>
 
             </div>
             
