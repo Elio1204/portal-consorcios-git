@@ -46,9 +46,22 @@
             </a>
 
             <a href="/proyectados" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors {{ request()->is('proyectados*') ? 'bg-gray-50 text-[#FA8072]' : 'text-gray-500 hover:bg-gray-50 hover:text-[#FA8072]' }}">
-                <i class="bi bi-file-earmark-pdf text-xl"></i>
+                <i class="bi bi-graph-up-arrow"></i>
                 Proyectados
             </a>
+            
+
+            <a href="/gastos-mensuales" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors {{ request()->is('gastos-mensuales*') ? 'bg-gray-50 text-[#FA8072]' : 'text-gray-500 hover:bg-gray-50 hover:text-[#FA8072]' }}">
+                <i class="bi bi-cash-coin text-2xl"></i>
+                Gastos Mensuales
+            </a>
+
+
+            <a href="/gastos-pagados" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors {{ request()->is('gastos-pagados*') ? 'bg-gray-50 text-[#FA8072]' : 'text-gray-500 hover:bg-gray-50 hover:text-[#FA8072]' }}">
+                <i class="bi bi-cash-coin text-2xl"></i>
+                Gastos Pagos
+            </a>
+        </div>
 
         </nav>
     </aside>

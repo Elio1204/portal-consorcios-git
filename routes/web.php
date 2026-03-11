@@ -6,6 +6,9 @@ use App\Http\Controllers\PortalController;
 use App\Http\Controllers\ExpensasController;
 use App\Http\Controllers\OrdenesTrabajoController;
 use App\Http\Controllers\ProyectadosController;
+use App\Http\Controllers\FichaControlesController;
+use App\Http\Controllers\GastosPagadosController;
+
 
 
 Route::get('/', function () {
@@ -22,4 +25,7 @@ Route::middleware(['conectar.consorcio'])->group(function () {
     Route::get('/expensas/descargar/{archivo}', [App\Http\Controllers\ExpensasController::class, 'descargar'])->name('expensas.descargar');
     Route::get('/ordenes-trabajo', [App\Http\Controllers\OrdenesTrabajoController::class, 'index']);
     Route::get('/proyectados', [App\Http\Controllers\ProyectadosController::class, 'index']);
+    Route::get('/gastos-mensuales',[App\Http\Controllers\FichaControlesController::class, 'index']);
+    Route::get('/gastos-pagados',[App\Http\Controllers\GastosPagadosController::class, 'index']);
+
 });
